@@ -2,3 +2,4 @@
 Compare between Json Scala libraries:
 - Play JSon
 - Jsoniter Scala
+- Jackson
