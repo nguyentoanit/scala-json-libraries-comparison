@@ -9,7 +9,7 @@ object Jsoniter extends App {
   val startTime = System.currentTimeMillis
 
   case class OldReport(campaignId: String, campaignName: String)
-  case class NewReport(reportDate: String, profileId: Long, report: Array[OldReport])
+  case class NewReport(reportDate: String, profileId: Long, data: Array[OldReport])
 
   implicit val codec: JsonValueCodec[Array[OldReport]] = JsonCodecMaker.make(CodecMakerConfig())
   implicit val codec2: JsonValueCodec[NewReport] = JsonCodecMaker.make(CodecMakerConfig())

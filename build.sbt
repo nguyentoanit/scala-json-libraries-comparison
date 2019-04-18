@@ -13,7 +13,8 @@ lazy val root = (project in file("."))
       "com.typesafe.play" %% "play-json" % "2.7.2",
       "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % "0.45.2" % Compile,
       "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % "0.45.2" % Provided, // required only in compile-time
-      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.9.8"
+      "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.9.8",
+      "com.lihaoyi" %% "ujson" % "0.7.1"
     )
   )
 

@@ -11,7 +11,7 @@ object Jackson extends App {
   val mapper = new ObjectMapper()
   mapper.registerModule(DefaultScalaModule)
   case class OldReport(campaignId: String, campaignName: String)
-  case class NewReport(reportDate: String, profileId: Long, report: Array[OldReport])
+  case class NewReport(reportDate: String, profileId: Long, data: Array[OldReport])
 
   val fis: FileInputStream = new FileInputStream("old.json.gz")
   val gis: GZIPInputStream = new GZIPInputStream(fis)
