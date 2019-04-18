@@ -1,29 +1,29 @@
 package example
 
 import java.io.{FileInputStream, FileOutputStream}
+import java.nio.charset.Charset
 import java.util.zip.{GZIPInputStream, GZIPOutputStream}
+import scala.io.Source
 
-import play.api.libs.json._
+import spray.json._
 
-object PlayJson extends App {
+object Spray extends App {
   val startTime = System.currentTimeMillis
 
   val fis: FileInputStream = new FileInputStream("old.json.gz")
   val gis: GZIPInputStream = new GZIPInputStream(fis)
 
-  val report: JsValue = Json.parse(gis)
-  val newReport: JsValue = Json.obj(
-    "reportDate" -> "20190101",
-    "profileId" -> 123,
+  val report: JsValue = Source.fromInputStream(gis).mkString.parseJson
+  val dataToCompress = JsObject(
+    "reportDate" -> JsString("20190101"),
+    "profileId" ->JsNumber(123),
     "data" -> report
   )
-
-  val dataToCompress = Json.toBytes(newReport)
 
   val fos: FileOutputStream = new FileOutputStream("new.json.gz")
   val gos: GZIPOutputStream = new GZIPOutputStream(fos)
 
-  gos.write(dataToCompress)
+  gos.write(dataToCompress.toString.getBytes(Charset.forName("UTF-8")))
   gos.close()
 
   val stopTime = System.currentTimeMillis
