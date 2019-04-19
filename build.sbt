@@ -7,7 +7,7 @@ ThisBuild / organizationName := "example"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "play-json",
+    name := "scala-json-libraries-comparison",
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "com.typesafe.play" %% "play-json" % "2.7.2",
